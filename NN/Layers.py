@@ -59,7 +59,7 @@ class DenseLayer(Layer):
         d_a = d_output * self.activation_fn.d(self.a)
         d_z = d_a @ self.weights.T
         d_w = self.x.T @ d_a
-        d_b = d_a.mean(axis=0) * self.x.shape[0]
+        d_b = d_a.sum(axis=0) * self.x.shape[0]
 
         return d_z, d_w, d_b
 
