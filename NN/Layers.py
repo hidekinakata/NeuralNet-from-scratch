@@ -56,7 +56,7 @@ class DenseLayer(Layer):
         return self.a
 
     def grad(self, d_output):
-        d_a = d_output * self.activation_fn.d(self.a)
+        d_a = d_output * self.activation_fn.d(self.z)
         d_z = d_a @ self.weights.T
         d_w = self.x.T @ d_a
         d_b = d_a.sum(axis=0) * self.x.shape[0]
